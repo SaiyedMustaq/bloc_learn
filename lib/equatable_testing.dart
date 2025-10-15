@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:equatable/equatable.dart';
 
 class EquatableTesting extends StatefulWidget {
   const EquatableTesting({super.key});
@@ -20,9 +21,7 @@ class _EquatableTestingState extends State<EquatableTesting> {
             print(person == person);
             //TODO it will return true when you compare same object like person==person
             print(person == person2);
-            //TODO it will return true when you compare same object like person==person2
-            print(person.hashCode);
-            print(person2.hashCode);
+            //TODO it will return true when you compare same object like person==person
           },
           child: Icon(Icons.add),
         ),
@@ -31,9 +30,13 @@ class _EquatableTestingState extends State<EquatableTesting> {
   }
 }
 
-class Person {
+class Person extends Equatable {
   final String name;
   final int age;
 
-  Person(this.name, this.age);
+  const Person(this.name, this.age);
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [name, age];
 }
