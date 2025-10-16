@@ -13,10 +13,7 @@ class SampleExample extends StatefulWidget {
 class _SampleExampleState extends State<SampleExample> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CounterBloc(),
-      child: Scaffold(appBar: AppBar(), body: CounterView()),
-    );
+    return Scaffold(appBar: AppBar(), body: CounterView());
   }
 }
 
@@ -25,13 +22,11 @@ class CounterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("Widget Build");
     return Column(
       children: [
         Center(
           child: BlocBuilder<CounterBloc, CounterState>(
             builder: (context, state) {
-              print("Text Build");
               return Text("${state.counterValue}", style: TextStyle(fontSize: 50));
             },
           ),
